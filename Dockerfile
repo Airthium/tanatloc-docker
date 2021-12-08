@@ -59,8 +59,9 @@ COPY tanatloc/plugins ${INSTALL_PATH}/plugins
 COPY tanatloc/public ${INSTALL_PATH}/public
 COPY tanatloc/src ${INSTALL_PATH}/src
 COPY tanatloc/templates ${INSTALL_PATH}/templates
+COPY tanatloc/.eslintrc ${INSTALL_PATH}/.eslintrc
 COPY tanatloc/.swcrc ${INSTALL_PATH}/.swcrc
-COPY tanatloc/next.env.d.ts ${INSTALL_PATH}/next.env.d.ts
+COPY tanatloc/next-env.d.ts ${INSTALL_PATH}/next-env.d.ts
 COPY tanatloc/next.config.js ${INSTALL_PATH}/next.config.js
 COPY tanatloc/package.json ${INSTALL_PATH}/package.json
 COPY tanatloc/process.d.ts ${INSTALL_PATH}/process.d.ts
@@ -69,8 +70,8 @@ COPY tanatloc/yarn.lock ${INSTALL_PATH}/yarn.lock
 
 WORKDIR ${INSTALL_PATH}
 
-RUN CI=1 yarn install
-RUN yarn prestart
+RUN yarn
+RUN yarn prestartwithoutrun
 RUN yarn next telemetry disable
 
 RUN yarn build
