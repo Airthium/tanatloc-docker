@@ -9,7 +9,6 @@ jobs:
 
     outputs:
       version: ${{ steps.package_version.outputs.version }}
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@main
@@ -76,6 +75,7 @@ jobs:
           context: .
           push: true
           tags: |
+            tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-minimal
             tanatloc/tanatloc:minimal
             tanatloc/tanatloc:latest
 
@@ -114,5 +114,6 @@ jobs:
           context: .
           push: true
           tags: |
+            tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-full
             tanatloc/tanatloc:full
             tanatloc/tanatloc:denso
