@@ -37,7 +37,10 @@ jobs:
           tag_name: v${{ steps.package_version.outputs.version }}
           release_name: v${{ steps.package_version.outputs.version }}
           body: |
-            Electron
+            Deployment docker available in [Docker Hub](https://hub.docker.com/repository/docker/tanatloc/tanatloc/tags)
+
+            - Minimal: without tanatloc plugins (only "Local")
+            - Full: with all plugins
           draft: false
           prerelease: false
 
@@ -79,7 +82,7 @@ jobs:
 
   docker-full:
     needs: create-release
-    name: Minimal docker
+    name: Full docker
     runs-on: ubuntu-latest
 
     steps:
