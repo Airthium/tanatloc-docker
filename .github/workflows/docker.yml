@@ -38,7 +38,6 @@ jobs:
           release_name: v${{ steps.package_version.outputs.version }}
           body: |
             Deployment docker available in [Docker Hub](https://hub.docker.com/repository/docker/tanatloc/tanatloc/tags)
-
             - Minimal: without Tanatloc plugins (only "Local")
             - Full: with all Tanatloc plugins
           draft: false
