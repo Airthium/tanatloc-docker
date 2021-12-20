@@ -40,5 +40,6 @@
     "three-to-glb": "./modules/three-to-glb/",
     "url-join": "4.0.1",
     "uuid": "8.3.2"
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }

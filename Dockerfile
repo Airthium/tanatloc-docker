@@ -17,13 +17,6 @@ RUN apt update \
         make python3 \
         nodejs node-gyp
 
-# Yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt update \
-    && apt install -yq \
-        yarn
-
 # NVM
 ENV NODE_VERSION=16.13.1
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -32,6 +25,9 @@ RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+
+# Yarn
+RUN corepack enable
 
 RUN apt autoremove \
     && apt-get clean \
@@ -51,6 +47,7 @@ ARG DB_PORT
 ENV DB_PORT $DB_PORT
 
 COPY tanatloc/.git ${INSTALL_PATH}/.git
+COPY tanatloc/.yarn ${INSTALL_PATH}/.yarn
 COPY tanatloc/config ${INSTALL_PATH}/config
 COPY tanatloc/install ${INSTALL_PATH}/install
 COPY tanatloc/models ${INSTALL_PATH}/models
@@ -70,11 +67,11 @@ COPY tanatloc/yarn.lock ${INSTALL_PATH}/yarn.lock
 
 WORKDIR ${INSTALL_PATH}
 
-RUN yarn
-RUN yarn prestartwithoutrun
-RUN yarn next telemetry disable
+RUN yarn install
+RUN yarn run prestartwithoutrun
+RUN yarn run next telemetry disable
 
-RUN yarn build
+RUN yarn run build
 
 ## RELEASE ##
 FROM tanatloc/worker
@@ -106,13 +103,6 @@ RUN apt update \
         make postgresql python3 \
         nodejs node-gyp
 
-# Yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt update \
-    && apt install -yq \
-        yarn
-
 # NVM
 ENV NODE_VERSION=16.13.1
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -121,6 +111,9 @@ RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+
+# Yarn
+RUN corepack enable
 
 RUN apt autoremove \
     && apt-get clean \
@@ -131,6 +124,8 @@ WORKDIR ${APP_PATH}
 
 COPY docker/package.json package.json
 
+COPY tanatloc/.git ${INSTALL_PATH}/.git
+COPY tanatloc/.yarn ${INSTALL_PATH}/.yarn
 COPY --from=builder ${INSTALL_PATH}/dist-install dist-install
 COPY --from=builder ${INSTALL_PATH}/modules modules
 COPY --from=builder ${INSTALL_PATH}/public public
@@ -139,8 +134,8 @@ COPY --from=builder ${INSTALL_PATH}/plugins plugins
 COPY --from=builder ${INSTALL_PATH}/.next .next
 COPY --from=builder ${INSTALL_PATH}/yarn.lock yarn.lock
 
-RUN yarn
-RUN yarn next telemetry disable
+RUN yarn install
+RUN yarn run next telemetry disable
 
 COPY docker/start.sh start.sh
 RUN chmod +x start.sh

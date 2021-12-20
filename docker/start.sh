@@ -15,4 +15,4 @@ done
 node dist-install/install
 
 # Start app
-yarn start
+yarn run start
