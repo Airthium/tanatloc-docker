@@ -74,6 +74,9 @@ jobs:
         with:
           context: .
           push: true
+          build-args: |
+            "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"
+            "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}"
           tags: |
             tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-minimal
             tanatloc/tanatloc:minimal
@@ -113,6 +116,9 @@ jobs:
         with:
           context: .
           push: true
+          build-args: |
+            "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"
+            "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}"
           tags: |
             tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-full
             tanatloc/tanatloc:full
