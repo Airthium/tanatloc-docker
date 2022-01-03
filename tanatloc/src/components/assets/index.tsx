@@ -1,3 +1,0 @@
-/** @module Components.Assets */
-
-export {}
