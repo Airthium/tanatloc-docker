@@ -1,0 +1,7 @@
+// Materials
+appendLog("Define materials...");
+
+<% materials.children.map(child => { -%>
+<% const value = child.value || child.default -%>
+real <%= child.name %> = <%- value -%>;
+<% }) -%>

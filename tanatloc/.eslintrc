@@ -1,0 +1,8 @@
+{
+  "extends": "next",
+  "ignorePatterns": ["**/__tests__/*.test.*"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "@next/next/no-img-element": "off"
+  }
+}

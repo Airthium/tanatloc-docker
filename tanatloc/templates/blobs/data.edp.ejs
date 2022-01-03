@@ -1,0 +1,17 @@
+{
+    {
+        ofstream data("<%= path %>/" + <%- name %> + ".dat");
+        data << "{" << endl;
+        data << "  \"name\": \"<%= dataName %>\"," << endl;
+        data << "  \"index\": \"<%= index %>\"," << endl;
+        data << "  \"x\": \"" << <%= x %> << "\"," << endl;
+        data << "  \"y\": \"" << <%= y %> << "\"" << endl;
+        data << " }" << endl;
+    }
+
+    if (mpirank == 0) {
+        ofstream processOut("process_data.log", append);
+        string saveOutput = "PROCESS DATA FILE " + <%- name %> + ".dat";
+        processOut << saveOutput << endl;
+    }
+}

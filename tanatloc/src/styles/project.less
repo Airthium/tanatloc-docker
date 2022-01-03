@@ -1,0 +1,292 @@
+.project-sider {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.project-sider .ant-layout-sider-children {
+  border-right: 1px solid @tanatloc-light-grey;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.project-sider .ant-menu-inline,
+.project-sider .ant-menu-vertical,
+.project-sider .ant-menu-vertical-left {
+  border-right: none !important;
+}
+
+.project-sider .ant-menu-item-selected::after {
+  border-right: 3px solid @tanatloc-primary-color !important;
+}
+
+.project-sider .ant-menu-root.menu {
+  max-height: calc(100vh - 195px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.project-sider .menu-logo {
+  margin: 0;
+  padding: 0 !important;
+  height: 64px;
+  cursor: unset;
+}
+
+.project-sider .menu-goback .goback-button {
+  border: none;
+}
+
+.project-sider .menu-goback .goback-button-icon {
+  color: @tanatloc-primary-color;
+}
+
+.project-sider .menu-divider {
+  background-color: @tanatloc-primary-color;
+  margin: 0 20px;
+}
+
+.project-sider .menu-title {
+  margin-top: 15px;
+  line-height: 1.5em;
+  cursor: unset;
+  white-space: normal;
+  height: 4em;
+}
+
+.project-sider .menu-submenu {
+  background-color: #f0f0f0;
+}
+
+.project-sider .menu-submenu .item-new {
+  cursor: unset;
+  margin-top: 10px;
+}
+
+.project-sider .menu-submenu .submenu-simulation-name .ant-menu-submenu-title {
+  padding-left: 24px !important;
+}
+
+.project-sider .menu-submenu .submenu-simulation-name .menu-item-with-line {
+  padding-left: 24px !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.project-sider
+  .menu-submenu
+  .submenu-simulation-name
+  .menu-item-with-line:not(:last-child)::before {
+  position: absolute;
+  content: '';
+  border: 1px solid #c0c0c0;
+  height: 20px;
+  width: 2px;
+  top: 30px;
+  left: 31px;
+  z-index: 100;
+}
+
+.project-sider
+  .menu-submenu
+  .submenu-simulation-name
+  .menu-item-with-line
+  span:first-child {
+  float: left;
+  height: 40px;
+  line-height: 45px;
+}
+
+.project-sider
+  .menu-submenu
+  .submenu-simulation-name
+  .menu-item-with-line
+  span:last-child {
+  float: left;
+  max-width: calc(100% - 24px) !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height: 412px;
+}
+
+.project-card .ant-card-head {
+  height: 80px;
+  padding: 0 24px;
+}
+
+.project-card .ant-card-cover {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.project-carousel {
+  margin: auto !important;
+  text-align: center;
+}
+
+.project-carousel img {
+  margin: auto !important;
+}
+
+.project-carousel-snapshot {
+  width: 260px;
+  height: 156px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.project-carousel-snapshot.archive {
+  cursor: not-allowed;
+}
+
+.project-carousel-snapshot img {
+  max-width: 98%;
+  max-height: 98%;
+}
+
+.project-carousel-description {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.project-carousel-description.archive {
+  cursor: not-allowed;
+}
+
+.project-snapshot {
+  width: 260px;
+  height: 156px;
+  cursor: pointer;
+}
+
+.project-snapshot.archive {
+  cursor: not-allowed;
+}
+
+.project-snapshot img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto !important;
+}
+
+.project-dots {
+  bottom: -10px !important;
+  left: unset !important;
+  right: calc(50% - 30px) !important;
+  padding: 5px;
+  padding-left: unset !important;
+  margin: unset !important;
+  background-color: rgba(217, 217, 217, 0.5);
+}
+
+.project-dots li button {
+  background: @tanatloc-primary-color !important;
+}
+
+.project-card .ant-card-body {
+  height: 70px;
+  border-top: 1px solid #f0f0f0;
+  padding: 0 24px;
+}
+
+.project-card .ant-card-actions > li {
+  margin: 8px 0;
+  flex: 0 1 auto;
+}
+
+.project-card .ant-card-head-title {
+  white-space: unset !important;
+}
+
+.project-card.archive {
+  background-color: #fafafa;
+}
+
+.carousel-dots > li > button {
+  background-color: @tanatloc-primary-color !important;
+}
+
+.upload > .ant-upload-select-picture-card {
+  width: 100%;
+  height: 100px;
+}
+
+.simulation-selector figure {
+  max-width: 80%;
+  border: 1px solid #f0f0f0;
+  margin: auto;
+}
+
+.simulation-selector figcaption {
+  text-align: center;
+  color: #9c9c9c;
+}
+
+.simulation-selector img {
+  max-width: 80%;
+}
+
+.boundaryCondition-item,
+.material-item {
+  margin-top: 12px !important;
+  border: 1px solid #f0f0f0 !important;
+}
+
+.boundaryCondition-item .ant-card-body,
+.material-item .ant-card-body {
+  padding: 12px !important;
+}
+
+.boundaryCondition .ant-card,
+.material .ant-card {
+  border: none !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.boundaryCondition .ant-card-head {
+  border: none !important;
+}
+
+.boundaryCondition .ant-card-body,
+.material .ant-card-body {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.menu-item-with-line {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.menu-item-with-line:not(:last-child)::before {
+  position: absolute;
+  content: '';
+  border: 1px solid #c0c0c0;
+  height: 20px;
+  width: 2px;
+  top: 30px;
+  left: 78px;
+  z-index: 100;
+}
+
+.menu-item-with-line span:first-child {
+  float: left;
+  height: 40px;
+  line-height: 45px;
+}
+
+.menu-item-with-line span:last-child {
+  float: left;
+  max-width: calc(100% - 24px) !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -62,24 +62,6 @@ ENV DB_HOST $DB_HOST
 ARG DB_PORT
 ENV DB_PORT $DB_PORT
 
-# COPY tanatloc/.git ${INSTALL_PATH}/.git
-# COPY tanatloc/.yarn ${INSTALL_PATH}/.yarn
-# COPY tanatloc/config ${INSTALL_PATH}/config
-# COPY tanatloc/install ${INSTALL_PATH}/install
-# COPY tanatloc/models ${INSTALL_PATH}/models
-# COPY tanatloc/plugins ${INSTALL_PATH}/plugins
-# COPY tanatloc/public ${INSTALL_PATH}/public
-# COPY tanatloc/src ${INSTALL_PATH}/src
-# COPY tanatloc/templates ${INSTALL_PATH}/templates
-# COPY tanatloc/.eslintrc ${INSTALL_PATH}/.eslintrc
-# COPY tanatloc/.swcrc ${INSTALL_PATH}/.swcrc
-# COPY tanatloc/next-env.d.ts ${INSTALL_PATH}/next-env.d.ts
-# COPY tanatloc/next.config.js ${INSTALL_PATH}/next.config.js
-# COPY tanatloc/package.json ${INSTALL_PATH}/package.json
-# COPY tanatloc/process.d.ts ${INSTALL_PATH}/process.d.ts
-# COPY tanatloc/tsconfig.json ${INSTALL_PATH}/tsconfig.json
-# COPY tanatloc/yarn.lock ${INSTALL_PATH}/yarn.lock
-
 WORKDIR ${INSTALL_PATH}
 
 RUN yarn install

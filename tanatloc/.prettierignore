@@ -1,0 +1,15 @@
+# Coverage
+/coverage/
+
+# Doc
+/doc/
+
+# Build
+/.next
+/out
+
+# Dist
+/dist-install/
+
+# Public
+/public/

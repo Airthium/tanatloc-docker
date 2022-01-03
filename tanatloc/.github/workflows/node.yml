@@ -1,0 +1,49 @@
+name: Node
+on: [push]
+
+jobs:
+  build:
+    name: Node
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@main
+        with:
+          token: ${{ secrets.SUBMODULES_TOKEN }}
+          submodules: recursive
+
+      - uses: actions/setup-node@master
+        with:
+          node-version: '16.13.1'
+
+      - uses: webfactory/ssh-agent@master
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install
+        run: YARN_CHECKSUM_BEHAVIOR=update yarn install
+
+      - name: Depcheck
+        run: yarn run depcheck
+
+      - name: Lint
+        run: yarn run prettier
+
+      - name: Tests
+        run: yarn run test || true
+
+      - name: Unsubscribe
+        run: yarn run next telemetry disable
+
+      - name: Build
+        run: yarn run build
+
+      - name: SonarCloud scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dproject.settings=config/sonar/sonar-project.properties
