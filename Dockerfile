@@ -47,7 +47,7 @@ RUN echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa && \
     chmod 600 /root/.ssh/id_rsa.pub
 
 # Clone
-RUN git clone git@github.com:Airthium/tanatloc.git ${INSTALL_PATH}
+RUN git clone git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b dev
 
 # Build
 ARG DB_ADMIN
@@ -69,6 +69,9 @@ RUN yarn run prestartwithoutrun
 RUN yarn run next telemetry disable
 
 RUN yarn run build
+
+# Remove SSH key
+RUN rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
 
 ## RELEASE ##
 FROM tanatloc/worker
