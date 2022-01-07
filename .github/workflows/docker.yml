@@ -13,21 +13,13 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@main
         with:
+          repository: "Airthium/tanatloc"
           token: ${{ secrets.TANATLOC_SSR_AS_SUBMODULE }}
-          submodules: true
-
-      - name: Submodule update
-        run: |
-          git submodule update --remote
-          git config --global user.name 'Github Actions bot'
-          git config --global user.email 'bot@tanatloc.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "Auto updated submodule" && git push
 
       - name: Version
         id: package_version
         run: |
-          VERSION=`cat tanatloc/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]'`
+          VERSION=`cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]'`
           echo "::set-output name=version::$VERSION"
 
       - name: Create release
@@ -53,9 +45,6 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@main
-        with:
-          token: ${{ secrets.TANATLOC_SSR_AS_SUBMODULE }}
-          submodules: true
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -90,9 +79,6 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@main
-        with:
-          token: ${{ secrets.TANATLOC_SSR_AS_SUBMODULE }}
-          submodules: recursive
 
       - name: Submodule update
         run: |
