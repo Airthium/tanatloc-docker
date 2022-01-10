@@ -66,6 +66,7 @@ jobs:
           build-args: |
             "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"
             "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}"
+            "GIT_PARAM=-q"
           tags: |
             tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-minimal
             tanatloc/tanatloc:minimal
@@ -105,7 +106,7 @@ jobs:
           build-args: |
             "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"
             "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}"
-            "RECURSIVE=--recursive"
+            "GIT_PARAM=--recursive"
           tags: |
             tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-full
             tanatloc/tanatloc:full

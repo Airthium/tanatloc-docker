@@ -37,7 +37,7 @@ RUN corepack enable
 # Build (one shot in order to do not keep ssh key in a layer)
 ARG SSH_PRIVATE_KEY
 ARG SSH_PUBLIC_KEY
-ARG RECURSIVE
+ARG GIT_PARAMS
 
 ARG DB_ADMIN
 ENV DB_ADMIN $DB_ADMIN
@@ -62,7 +62,7 @@ RUN mkdir -p /root/.ssh \
     && chmod 600 /root/.ssh/id_rsa \
     && chmod 600 /root/.ssh/id_rsa.pub \
     # Clone
-    && git clone "$RECURSIVE" git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b dev \
+    && git clone "$GIT_PARAMS" git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b dev \
     # Build
     && yarn install \
     && yarn run prestartwithoutrun \
