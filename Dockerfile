@@ -63,7 +63,6 @@ RUN mkdir -p /root/.ssh \
     # Clone
     && git clone git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b dev \
     # Build
-    && yarn set version stable \
     && yarn install \
     && yarn run prestartwithoutrun \
     && yarn run next telemetry disable \
@@ -146,7 +145,6 @@ RUN mkdir -p /root/.ssh \
     && chmod 600 /root/.ssh/id_rsa \
     && chmod 600 /root/.ssh/id_rsa.pub \
     # Build
-    && yarn set version stable \
     && yarn install \
     && yarn run next telemetry disable \
     # Remove SSH key
