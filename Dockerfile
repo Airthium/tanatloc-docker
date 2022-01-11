@@ -156,4 +156,4 @@ COPY docker/start.sh start.sh
 RUN chmod +x start.sh
 
 ## START
-CMD ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD
+CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD
