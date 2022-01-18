@@ -158,5 +158,10 @@ RUN chmod +x start.sh
 # Path
 ENV ADDITIONAL_PATH $ADDITIONAL_PATH
 
+# ShareTask
+ENV SHARETASK_JVM $SHARETASK_JVM
+RUN mkdir -p /usr/local/sharetask/bin
+RUN mkdir -p /usr/local/jre/bin
+
 ## START
 CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD
