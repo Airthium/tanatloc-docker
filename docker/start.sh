@@ -2,6 +2,7 @@
 
 POSTGRES_USER="$1"
 POSTGRES_PASSWORD="$2"
+HOST_STORAGE="$3"
 
 # Wait for postgresql
 until PGPASSWORD=$POSTGRES_PASSWORD psql -h database -U "$POSTGRES_USER" -c '\q'; do
@@ -15,4 +16,4 @@ done
 node dist-install/install
 
 # Start app
-yarn run start
+HOST_STORAGE=${HOST_STORAGE} yarn run start

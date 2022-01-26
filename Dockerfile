@@ -12,10 +12,10 @@ ENV APP_PATH /home/app
 RUN apt update \
     && apt upgrade -yq \
     && apt install -yq \
-        apt-utils curl \
-        git gnupg g++ libpq-dev \
-        make python3 \
-        nodejs node-gyp \
+    apt-utils curl \
+    git gnupg g++ libpq-dev \
+    make python3 \
+    nodejs node-gyp \
     && apt autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -53,7 +53,7 @@ ENV DB_PORT $DB_PORT
 
 WORKDIR ${INSTALL_PATH}
 
-    # SSH key
+# SSH key
 RUN mkdir -p /root/.ssh \
     && chmod 0700 /root/.ssh \
     && ssh-keyscan github.com > /root/.ssh/known_hosts \
@@ -85,9 +85,9 @@ ENV APP_PATH /home/app
 RUN apt update \
     && apt upgrade -yq \
     && apt install -yq \
-        curl git gnupg g++ libpq-dev \
-        make postgresql python3 \
-        nodejs node-gyp \
+    curl git gnupg g++ libpq-dev \
+    make postgresql python3 \
+    nodejs node-gyp \
     && apt autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -137,7 +137,7 @@ ENV DB_HOST $DB_HOST
 ARG DB_PORT
 ENV DB_PORT $DB_PORT
 
-    # SSH key
+# SSH key
 RUN mkdir -p /root/.ssh \
     && chmod 0700 /root/.ssh \
     && ssh-keyscan github.com > /root/.ssh/known_hosts \
@@ -158,10 +158,13 @@ RUN chmod +x start.sh
 # Path
 ENV ADDITIONAL_PATH $ADDITIONAL_PATH
 
+# Storage
+ENV HOST_STORAGE=${HOST_STORAGE}
+
 # ShareTask
 ENV SHARETASK_JVM $SHARETASK_JVM
 RUN mkdir -p /usr/local/sharetask/bin
 RUN mkdir -p /usr/local/jre/bin
 
 ## START
-CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD
+CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD $HOST_STORAGE
