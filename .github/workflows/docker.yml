@@ -81,11 +81,6 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@main
 
-      - name: Submodule update
-        run: |
-          git pull --recurse-submodules
-          git submodule update --remote --recursive
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 

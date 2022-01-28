@@ -16,4 +16,4 @@ done
 node dist-install/install
 
 # Start app
-HOST_STORAGE=${HOST_STORAGE} yarn run start
+HOST_STORAGE=${HOST_STORAGE} HTTP_PROXY=${HTTP_PROXY} HTTPS_PROXY=${HTTPS_PROXY} yarn run start
