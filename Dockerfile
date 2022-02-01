@@ -1,12 +1,9 @@
 ## BUILDER ##
 FROM tanatloc/worker as builder
 
-USER root
-
 ENV DEBIAN_FRONTEND noninteractive
 
 ENV INSTALL_PATH /home/app
-ENV APP_PATH /home/app
 
 # Install packages
 RUN apt update \
@@ -15,21 +12,16 @@ RUN apt update \
     apt-utils curl \
     git gnupg g++ libpq-dev \
     make python3 \
-    nodejs node-gyp \
     && apt autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# NVM
-ENV NVM_VERSION=0.39.1
-ENV NODE_VERSION=16.13.1
-ENV NVM_DIR /root/.nvm
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh | bash \
-    && . "$NVM_DIR/nvm.sh" \
-    && nvm install ${NODE_VERSION} \
-    && nvm use v${NODE_VERSION} \
-    && nvm alias default v${NODE_VERSION}
+# Node
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -yq nodejs \
+    && apt autoremove \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Yarn
 RUN corepack enable
@@ -74,8 +66,6 @@ RUN mkdir -p /root/.ssh \
 ## RELEASE ##
 FROM tanatloc/worker
 
-USER root
-
 ENV DEBIAN_FRONTEND noninteractive
 
 ENV INSTALL_PATH /home/app
@@ -87,21 +77,16 @@ RUN apt update \
     && apt install -yq \
     curl git gnupg g++ libpq-dev \
     make postgresql python3 \
-    nodejs node-gyp \
     && apt autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# NVM
-ENV NVM_VERSION=0.39.1
-ENV NODE_VERSION=16.13.1
-ENV NVM_DIR /root/.nvm
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh | bash \
-    && . "$NVM_DIR/nvm.sh" \
-    && nvm install ${NODE_VERSION} \
-    && nvm use v${NODE_VERSION} \
-    && nvm alias default v${NODE_VERSION}
+# Node
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs \
+    && apt autoremove \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Yarn
 RUN corepack enable
@@ -151,10 +136,6 @@ RUN mkdir -p /root/.ssh \
     # Remove SSH key
     && rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
 
-# Start script
-COPY docker/start.sh start.sh
-RUN chmod +x start.sh
-
 # Path
 ENV ADDITIONAL_PATH $ADDITIONAL_PATH
 
@@ -165,6 +146,14 @@ ENV HOST_STORAGE=${HOST_STORAGE}
 ENV SHARETASK_JVM $SHARETASK_JVM
 RUN mkdir -p /usr/local/sharetask/bin
 RUN mkdir -p /usr/local/jre/bin
+
+# Start script
+COPY docker/start.sh start.sh
+RUN chmod a+x start.sh
+
+# Grant access to any user
+RUN chmod a+rw ${APP_PATH}
+RUN chmod a+rw ${APP_PATH}/public
 
 ## START
 CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD $HOST_STORAGE
