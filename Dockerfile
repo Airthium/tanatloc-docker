@@ -106,6 +106,10 @@ COPY --from=builder ${INSTALL_PATH}/plugins plugins
 COPY --from=builder ${INSTALL_PATH}/.next .next
 COPY --from=builder ${INSTALL_PATH}/yarn.lock yarn.lock
 
+# Corepack prepare
+RUN corepack prepare yarn@3.1.1 -o=yarn-3.1.1.tgz
+RUN cp -r /root/.node ${APP_PATH}/.node
+
 # Build (one shot in order to do not keep ssh key in a layer)
 ARG SSH_PRIVATE_KEY
 ARG SSH_PUBLIC_KEY
@@ -153,6 +157,7 @@ RUN chmod a+x start.sh
 
 # Grant access to any user
 RUN chmod a+rw ${APP_PATH}
+RUN chmod a+rw ${APP_PATH}/.node
 RUN chmod a+rw ${APP_PATH}/public
 
 ## START

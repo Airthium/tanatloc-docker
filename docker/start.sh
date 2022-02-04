@@ -15,7 +15,13 @@ done
 >&2 echo "Postgres is up - starting Tanatloc..."
 
 # dB install
+echo "====> Install"
 node dist-install/install
 
+# Corepack
+echo "====> Hydrate corepack..."
+corepack hydrate yarn-3.1.1.tgz
+
 # Start app
+echo "====> Start..."
 HOST_STORAGE=${HOST_STORAGE} HTTP_PROXY=${HTTP_PROXY} HTTPS_PROXY=${HTTPS_PROXY} yarn run start
