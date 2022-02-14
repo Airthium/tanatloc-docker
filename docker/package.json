@@ -38,7 +38,7 @@
     "redux-persist": "6.0.0",
     "set-interval-async": "2.0.3",
     "tar": "6.1.11",
-    "three-to-glb": "ssh://git@github.com:Airthium/three-to-glb.git#1.1.1",
+    "three-to-glb": "ssh://git@github.com:Airthium/three-to-glb.git#1.1.2",
     "url-join": "4.0.1",
     "uuid": "8.3.2"
   },
