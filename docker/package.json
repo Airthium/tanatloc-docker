@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "@hapi/iron": "6.0.0",
-    "@sentry/node": "6.17.9",
+    "@sentry/node": "6.18.0",
     "archiver": "5.3.0",
     "better-react-mathjax": "1.0.3",
     "cookie": "0.4.2",
     "ejs": "3.1.6",
-    "electron": "17.0.1",
+    "electron": "17.1.0",
     "electron-serve": "1.1.0",
     "electron-store": "8.0.1",
     "express": "4.17.3",
@@ -43,5 +43,5 @@
     "url-join": "4.0.1",
     "uuid": "8.3.2"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.2.0"
 }
