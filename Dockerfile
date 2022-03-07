@@ -77,6 +77,7 @@ RUN apt update \
     && apt install -yq \
     curl git gnupg g++ libpq-dev \
     make postgresql python3 \
+    sudo \
     && apt autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -154,11 +155,6 @@ RUN mkdir -p /usr/local/jre/bin
 # Start script
 COPY docker/start.sh start.sh
 RUN chmod a+x start.sh
-
-# Grant access to any user
-RUN chmod a+rw ${APP_PATH}
-RUN chmod a+rw ${APP_PATH}/.node
-RUN chmod a+rw ${APP_PATH}/public
 
 ## START
 CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD $HOST_STORAGE
