@@ -58,7 +58,7 @@ node dist-install/install
 
 # Corepack
 echo "====> Hydrate corepack..."
-corepack hydrate yarn-3.1.1.tgz
+corepack hydrate yarn-3.2.0.tgz
 
 # Start app
 echo "====> Start..."
