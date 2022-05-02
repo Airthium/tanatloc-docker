@@ -57,7 +57,7 @@ RUN mkdir -p /root/.ssh \
     && git clone "$GIT_PARAM" git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b dev \
     # Build
     && YARN_CHECKSUM_BEHAVIOR="update" yarn install \
-    && yarn run prestartwithoutrun \
+    && yarn run prestart:norun \
     && yarn run next telemetry disable \
     && yarn run build \
     # Remove SSH key
