@@ -12,20 +12,22 @@ useradd --shell /bin/bash -u $UID -d $HOME -o -c "" -m user
 
 # Set .env
 echo "====> Set .env"
-echo "export OCCPATH=${OCCPATH}" > $HOME/.env
-echo "export GMSHPATH=${GMSHPATH}" >> $HOME/.env
-echo "export FREEFEMPATH=${FREEFEMPATH}" >> $HOME/.env
-echo "export CONVERTERSPATH=${CONVERTERSPATH}" >> $HOME/.env
-echo "export DB_ADMIN=${DB_ADMIN}" >> $HOME/.env
-echo "export DB_ADMIN_PASSWORD=${DB_ADMIN_PASSWORD}" >> $HOME/.env
-echo "export DB_HOST=${DB_HOST}" >> $HOME/.env
-echo "export DB_ADMIN=${DB_ADMIN}" >> $HOME/.env
-echo "export DOMAIN=${DOMAIN}" >> $HOME/.env
-echo "export ADDITIONAL_PATH=${ADDITIONAL_PATH}" >> $HOME/.env
-echo "export HOST_STORAGE=${STORAGE_PATH}" >> $HOME/.env
-echo "export HTTP_PROXY=${HTTP_PROXY}" >> $HOME/.env
-echo "export HTTPS_PROXY=${HTTPS_PROXY}" >> $HOME/.env
-echo "export SHARETASK_JVM=${SHARETASK_JVM}" >> $HOME/.env
+{
+  echo "export OCCPATH=${OCCPATH}"
+  echo "export GMSHPATH=${GMSHPATH}"
+  echo "export FREEFEMPATH=${FREEFEMPATH}"
+  echo "export CONVERTERSPATH=${CONVERTERSPATH}"
+  echo "export DB_ADMIN=${DB_ADMIN}"
+  echo "export DB_ADMIN_PASSWORD=${DB_ADMIN_PASSWORD}"
+  echo "export DB_HOST=${DB_HOST}"
+  echo "export DB_ADMIN=${DB_ADMIN}"
+  echo "export DOMAIN=${DOMAIN}"
+  echo "export ADDITIONAL_PATH=${ADDITIONAL_PATH}"
+  echo "export HOST_STORAGE=${STORAGE_PATH}"
+  echo "export HTTP_PROXY=${HTTP_PROXY}"
+  echo "export HTTPS_PROXY=${HTTPS_PROXY}"
+  echo "export SHARETASK_JVM=${SHARETASK_JVM}"
+} > $HOME/.env
 
 # Grant access
 echo "====> Grant access"
