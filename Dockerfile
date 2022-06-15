@@ -54,7 +54,7 @@ RUN mkdir -p /root/.ssh \
     && chmod 600 /root/.ssh/id_rsa \
     && chmod 600 /root/.ssh/id_rsa.pub \
     # Clone
-    && git clone "$GIT_PARAM" git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b dev \
+    && git clone "$GIT_PARAM" git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b master \
     # Build
     && YARN_CHECKSUM_BEHAVIOR="update" yarn install \
     && yarn run prestart:norun \
