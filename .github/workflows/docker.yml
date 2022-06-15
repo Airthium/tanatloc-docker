@@ -23,6 +23,7 @@ jobs:
           echo "::set-output name=version::$VERSION"
 
       - name: Create release
+        continue-on-error: true
         id: create_release
         uses: actions/create-release@v1
         env:
