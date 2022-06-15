@@ -39,6 +39,7 @@ jobs:
 
   docker-minimal:
     needs: create-release
+    if: always()
     name: Minimal docker
     runs-on: ubuntu-latest
 
@@ -74,6 +75,7 @@ jobs:
 
   docker-full:
     needs: create-release
+    if: always()
     name: Full docker
     runs-on: ubuntu-latest
 
