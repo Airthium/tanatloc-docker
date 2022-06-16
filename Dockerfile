@@ -97,10 +97,7 @@ COPY --from=builder ${INSTALL_PATH}/yarn.lock yarn.lock
 RUN corepack prepare yarn@3.2.0 -o=yarn-3.2.0.tgz
 RUN cp -r /root/.node ${APP_PATH}/.node
 
-# Build (one shot in order to do not keep ssh key in a layer)
-ARG SSH_PRIVATE_KEY
-ARG SSH_PUBLIC_KEY
-
+# Build
 ARG DB_ADMIN
 ENV DB_ADMIN $DB_ADMIN
 
@@ -113,19 +110,8 @@ ENV DB_HOST $DB_HOST
 ARG DB_PORT
 ENV DB_PORT $DB_PORT
 
-# SSH key
-RUN mkdir -p /root/.ssh \
-    && chmod 0700 /root/.ssh \
-    && ssh-keyscan github.com > /root/.ssh/known_hosts \
-    && echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa \
-    && echo "$SSH_PUBLIC_KEY" > /root/.ssh/id_rsa.pub \
-    && chmod 600 /root/.ssh/id_rsa \
-    && chmod 600 /root/.ssh/id_rsa.pub \
-    # Build
-    && YARN_CHECKSUM_BEHAVIOR="update" yarn install \
-    && yarn run next telemetry disable \
-    # Remove SSH key
-    && rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+RUN YARN_CHECKSUM_BEHAVIOR="update" yarn install \
+    && yarn run next telemetry disable
 
 # Path
 ENV ADDITIONAL_PATH $ADDITIONAL_PATH
