@@ -26,11 +26,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
 # Yarn
 RUN corepack enable
 
-# Build (one shot in order to do not keep ssh key in a layer)
-ARG SSH_PRIVATE_KEY
-ARG SSH_PUBLIC_KEY
-ARG GIT_PARAM
-
+# Build
 ARG DB_ADMIN
 ENV DB_ADMIN $DB_ADMIN
 
@@ -45,23 +41,12 @@ ENV DB_PORT $DB_PORT
 
 WORKDIR ${INSTALL_PATH}
 
-# SSH key
-RUN mkdir -p /root/.ssh \
-    && chmod 0700 /root/.ssh \
-    && ssh-keyscan github.com > /root/.ssh/known_hosts \
-    && echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa \
-    && echo "$SSH_PUBLIC_KEY" > /root/.ssh/id_rsa.pub \
-    && chmod 600 /root/.ssh/id_rsa \
-    && chmod 600 /root/.ssh/id_rsa.pub \
-    # Clone
-    && git clone "$GIT_PARAM" git@github.com:Airthium/tanatloc.git ${INSTALL_PATH} -b master \
-    # Build
-    && YARN_CHECKSUM_BEHAVIOR="update" yarn install \
+COPY tanatloc ${INSTALL_PATH}
+
+RUN YARN_CHECKSUM_BEHAVIOR="update" yarn install \
     && yarn run prestart:norun \
     && yarn run next telemetry disable \
-    && yarn run build \
-    # Remove SSH key
-    && rm /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+    && yarn run build
 
 ## RELEASE ##
 FROM tanatloc/worker

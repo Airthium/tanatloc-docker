@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@main
         with:
           repository: "Airthium/tanatloc"
-          token: ${{ secrets.TANATLOC_SSR_AS_SUBMODULE }}
+          token: ${{ secrets.TANATLOC_AS_SUBMODULE }}
 
       - name: Version
         id: package_version
@@ -40,13 +40,21 @@ jobs:
 
   docker-minimal:
     needs: create-release
-    if: always()
     name: Minimal docker
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out Git repository
         uses: actions/checkout@main
+        with:
+          token: ${{ secrets.TANATLOC_AS_SUBMODULE }}
+          submodules: true
+
+      - name: Remove plugins
+        run: |
+          rm -rf ./tanatloc/plugins/denso/*
+          rm -rf ./tanatloc/plugins/rescale/*
+          rm -rf ./tanatloc/plugins/sharetask/*
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -65,10 +73,6 @@ jobs:
         with:
           context: .
           push: true
-          build-args: |
-            "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"
-            "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}"
-            "GIT_PARAM=-q"
           tags: |
             tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-minimal
             tanatloc/tanatloc:minimal
@@ -76,13 +80,15 @@ jobs:
 
   docker-full:
     needs: create-release
-    if: always()
     name: Full docker
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out Git repository
         uses: actions/checkout@main
+        with:
+          token: ${{ secrets.TANATLOC_AS_SUBMODULE }}
+          submodules: true
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -101,10 +107,6 @@ jobs:
         with:
           context: .
           push: true
-          build-args: |
-            "SSH_PRIVATE_KEY=${{ secrets.SSH_PRIVATE_KEY }}"
-            "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}"
-            "GIT_PARAM=--recursive"
           tags: |
             tanatloc/tanatloc:${{ needs.create-release.outputs.version }}-full
             tanatloc/tanatloc:full
