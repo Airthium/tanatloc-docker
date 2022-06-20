@@ -94,7 +94,7 @@ COPY --from=builder ${INSTALL_PATH}/.next .next
 COPY --from=builder ${INSTALL_PATH}/yarn.lock yarn.lock
 
 # Corepack prepare
-RUN corepack prepare yarn@3.2.0 -o=yarn-3.2.0.tgz
+RUN corepack prepare yarn@3.2.1 -o=yarn-3.2.1.tgz
 RUN cp -r /root/.node ${APP_PATH}/.node
 
 # Build

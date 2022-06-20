@@ -8,7 +8,7 @@ HOME=/home/app
 
 # Create user
 echo "====> Create user"
-useradd --shell /bin/bash -u $UID -d $HOME -o -c "" -m user
+useradd --shell /bin/bash -u $UID -d $HOME -o -c "" -m $USER
 
 # Set .env
 echo "====> Set .env"
@@ -31,11 +31,11 @@ echo "====> Set .env"
 
 # Grant access
 echo "====> Grant access"
-chown -R user:user $HOME
+chown -R $USER:$USER $HOME
 
 # Switch user
-sudo -i -u user bash << EOF
-echo "====> User is now 'user'"
+sudo -i -u $USER bash << EOF
+echo "====> User is now '$USER'"
 
 # Get .env
 echo "====> Get .env"
@@ -60,7 +60,7 @@ node dist-install/install
 
 # Corepack
 echo "====> Hydrate corepack..."
-corepack hydrate yarn-3.2.0.tgz
+corepack hydrate yarn-3.2.1.tgz
 
 # Start app
 echo "====> Start..."
