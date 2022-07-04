@@ -17,13 +17,13 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@main
         with:
-          repository: "Airthium/tanatloc"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TANATLOC_AS_SUBMODULE }}
+          submodules: true
 
       - name: Version
         id: package_version
         run: |
-          VERSION=`cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]'`
+          VERSION=`cat tanatloc/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]'`
           echo "::set-output name=version::$VERSION"
 
       - name: Create release

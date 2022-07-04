@@ -20,4 +20,4 @@ jobs:
           git config --global user.name 'Github Actions bot'
           git config --global user.email 'bot@tanatloc.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "Auto updated submodule" --allow-empty && git push
+          git commit -am "Submodule update [skip ci]" --allow-empty && git push
