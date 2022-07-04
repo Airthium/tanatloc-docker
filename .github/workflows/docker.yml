@@ -54,12 +54,6 @@ jobs:
           token: ${{ secrets.TANATLOC_AS_SUBMODULE }}
           submodules: true
 
-      - name: Remove plugins
-        run: |
-          rm -rf ./tanatloc/plugins/denso/*
-          rm -rf ./tanatloc/plugins/rescale/*
-          rm -rf ./tanatloc/plugins/sharetask/*
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -92,7 +86,7 @@ jobs:
         uses: actions/checkout@main
         with:
           token: ${{ secrets.TANATLOC_AS_SUBMODULE }}
-          submodules: true
+          submodules: recursive
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
