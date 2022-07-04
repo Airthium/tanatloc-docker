@@ -51,7 +51,7 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TANATLOC_AS_SUBMODULE }}
           submodules: true
 
       - name: Remove plugins
