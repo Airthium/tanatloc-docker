@@ -19,7 +19,7 @@
     "extract-json-from-string": "1.0.1",
     "form-data": "4.0.0",
     "html-react-parser": "3.0.3",
-    "is-docker": "2.2.1",
+    "is-docker": "3.0.0",
     "is-electron": "2.2.1",
     "lodash.merge": "4.6.2",
     "mailersend": "1.4.1",
@@ -41,7 +41,7 @@
     "set-interval-async": "3.0.2",
     "tar": "6.1.11",
     "three": "0.143.0",
-    "url-join": "4.0.1",
+    "url-join": "5.0.0",
     "uuid": "8.3.2"
   },
   "packageManager": "yarn@3.2.2"
