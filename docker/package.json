@@ -2,7 +2,7 @@
   "name": "tanatloc-build",
   "private": true,
   "description": "Tanatloc",
-  "license": "UNLICENSED",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "NODE_ENV=production NODE_OPTIONS=\"--max_old_space_size=8192\" node dist/src/server/index.js"
   },
