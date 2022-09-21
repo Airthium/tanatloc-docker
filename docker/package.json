@@ -7,6 +7,7 @@
     "start": "NODE_ENV=production NODE_OPTIONS=\"--max_old_space_size=8192\" node dist/src/server/index.js"
   },
   "dependencies": {
+    "@airthium/pg-format": "1.0.9",
     "@hapi/iron": "7.0.0",
     "@sentry/node": "7.13.0",
     "archiver": "5.3.1",
@@ -29,8 +30,7 @@
     "passport": "0.6.0",
     "passport-local": "1.0.0",
     "pg": "8.8.0",
-    "pg-format": "https://github.com/Airthium/pg-format.git#1.0.8",
-    "pg-native": "https://github.com/Airthium/pg-native.git#3.0.1",
+    "pg-native": "npm:@airthium/pg-native@3.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "8.0.2",
