@@ -56,7 +56,7 @@ done
 
 # dB & data install
 echo "====> Install"
-node dist-install/install
+node --experimental-specifier-resolution=node dist-install/install
 
 # Corepack
 echo "====> Hydrate corepack..."
