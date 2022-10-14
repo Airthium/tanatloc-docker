@@ -41,7 +41,7 @@ ENV DB_PORT $DB_PORT
 
 WORKDIR ${INSTALL_PATH}
 
-COPY tanatloc ${INSTALL_PATH}
+COPY tanatloc .
 
 RUN YARN_CHECKSUM_BEHAVIOR="update" yarn install \
     && yarn run prestart:norun \
@@ -94,8 +94,9 @@ COPY --from=builder ${INSTALL_PATH}/.next .next
 COPY --from=builder ${INSTALL_PATH}/yarn.lock yarn.lock
 
 # Corepack prepare
-RUN corepack prepare yarn@3.2.4 -o=yarn-3.2.4.tgz
-RUN cp -r /root/.node ${APP_PATH}/.node
+ENV YARN_VERSION 3.2.4
+RUN corepack prepare yarn@${YARN_VERSION} -o=yarn-${YARN_VERSION}.tgz
+RUN cp -r /root/.node ./.node
 
 # Build
 ARG DB_ADMIN
@@ -129,4 +130,4 @@ COPY docker/start.sh start.sh
 RUN chmod a+x start.sh
 
 ## START
-CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh $DB_ADMIN $DB_ADMIN_PASSWORD $HOST_STORAGE
+CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh

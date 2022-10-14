@@ -1,9 +1,5 @@
 #!/bin/sh
 
-POSTGRES_USER="$1"
-POSTGRES_PASSWORD="$2"
-HOST_STORAGE="$3"
-
 HOME=/home/app
 
 # Create user
@@ -23,7 +19,7 @@ echo "====> Set .env"
   echo "export DB_ADMIN=${DB_ADMIN}"
   echo "export DOMAIN=${DOMAIN}"
   echo "export ADDITIONAL_PATH=${ADDITIONAL_PATH}"
-  echo "export HOST_STORAGE=${STORAGE_PATH}"
+  echo "export HOST_STORAGE=${HOST_STORAGE}"
   echo "export HTTP_PROXY=${HTTP_PROXY}"
   echo "export HTTPS_PROXY=${HTTPS_PROXY}"
   echo "export SHARETASK_JVM=${SHARETASK_JVM}"
@@ -47,7 +43,7 @@ export FF_LOADPATH=$FREEFEMPATH/lib/ff++/4.9/lib
 
 # Wait for postgresql
 echo "====> Wait for Postgres"
-until PGPASSWORD=$POSTGRES_PASSWORD psql -h database -U "$POSTGRES_USER" -c '\q'; do
+until PGPASSWORD=${DB_ADMIN_PASSWORD} psql -h database -U "${DB_ADMIN}" -c '\q'; do
   >&2 echo "Postgres is unavailable - waiting..."
   sleep 1
 done
@@ -60,10 +56,10 @@ node --experimental-specifier-resolution=node dist-install/install
 
 # Corepack
 echo "====> Hydrate corepack..."
-corepack hydrate yarn-3.2.4.tgz
+corepack hydrate yarn-${YARN_VERSION}.tgz
 
 # Start app
 echo "====> Start..."
-HOST_STORAGE="${HOST_STORAGE}" HTTP_PROXY="${HTTP_PROXY}" HTTPS_PROXY="${HTTPS_PROXY}" yarn run start
+HOST_STORAGE="${HOST_STORAGE}" HTTP_PROXY="${HTTP_PROXY}" HTTPS_PROXY="${HTTPS_PROXY}" .yarn/releases/yarn-${YARN_VERSION}.cjs start
 
 EOF
