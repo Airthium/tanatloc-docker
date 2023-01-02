@@ -39,7 +39,7 @@
     "redux-devtools-extension": "2.13.9",
     "redux-persist": "6.0.0",
     "sharp": "0.31.3",
-    "set-interval-async": "3.0.2",
+    "set-interval-async": "3.0.3",
     "tar": "6.1.13",
     "three": "0.148.0",
     "url-join": "4.0.1",
