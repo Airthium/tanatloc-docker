@@ -43,7 +43,7 @@
     "sharp": "0.31.3",
     "set-interval-async": "3.0.3",
     "tar": "6.1.13",
-    "three": "0.147.0",
+    "three": "0.148.0",
     "url-join": "5.0.0",
     "uuid": "9.0.0"
   },
