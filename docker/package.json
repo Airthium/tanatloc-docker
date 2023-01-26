@@ -25,7 +25,7 @@
     "html-react-parser": "3.0.8",
     "is-docker": "3.0.0",
     "is-electron": "2.2.1",
-    "lodash.merge": "4.6.2",
+    "lodash": "4.17.21",
     "mailersend": "2.0.4",
     "mathjax": "3.2.2",
     "next": "13.1.5",
