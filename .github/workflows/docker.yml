@@ -78,7 +78,7 @@ jobs:
 
   docker-denso:
     needs: create-release
-    name: Full docker
+    name: Denso docker
     runs-on: ubuntu-latest
 
     steps:
