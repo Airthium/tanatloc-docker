@@ -4,7 +4,7 @@ HOME=/home/app
 
 # Create user
 echo "====> Create user"
-useradd --shell /bin/bash -u $UID -d $HOME -o -c "" -m $USER
+useradd --shell /bin/bash -u "$UID" -d "$HOME" -o -c "" -m "$USER"
 
 # Set .env
 echo "====> Set .env"
@@ -23,14 +23,19 @@ echo "====> Set .env"
   echo "export HTTP_PROXY=${HTTP_PROXY}"
   echo "export HTTPS_PROXY=${HTTPS_PROXY}"
   echo "export SHARETASK_JVM=${SHARETASK_JVM}"
-} > $HOME/.env
+} >$HOME/.env
 
 # Grant access
 echo "====> Grant access"
-chown -R $USER:$USER $HOME
+find $HOME -not -user "$USER" -execdir chown "$USER":"$USER" {} \+
+
+# Yarn version
+echo "====> Yarn version"
+YARN_VERSION=$(cat package.json | grep packageManager | head -1 | awk -F: '{ print $2 }' | sed 's/["\ ]//g' | sed 's/yarn@//g')
+echo "      $YARN_VERSION"
 
 # Switch user
-sudo -i -u $USER bash << EOF
+sudo -i -u "$USER" bash <<EOF
 echo "====> User is now '$USER'"
 
 # Get .env

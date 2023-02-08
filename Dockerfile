@@ -94,9 +94,9 @@ COPY --from=builder ${INSTALL_PATH}/.next .next
 COPY --from=builder ${INSTALL_PATH}/yarn.lock yarn.lock
 
 # Corepack prepare
-ENV YARN_VERSION 3.3.1
-RUN corepack prepare yarn@${YARN_VERSION} -o=yarn-${YARN_VERSION}.tgz
-RUN mkdir -p ./.cache && cp -r /root/.cache/node ./.cache/node
+RUN YARN_VERSION=$(cat package.json | grep packageManager | head -1 | awk -F: '{ print $2 }' | sed 's/["\ ]//g' | sed 's/yarn@//g') \
+    && corepack prepare yarn@${YARN_VERSION} -o=yarn-${YARN_VERSION}.tgz \
+    && mkdir -p ./.cache && cp -r /root/.cache/node ./.cache/node
 
 # Build
 ARG DB_ADMIN
