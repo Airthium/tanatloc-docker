@@ -27,7 +27,7 @@ echo "====> Set .env"
 
 # Grant access
 echo "====> Grant access"
-find $HOME -not -user "$USER" -execdir chown "$USER":"$USER" {} \+
+chown -R $USER:$USER $HOME
 
 # Yarn version
 echo "====> Yarn version"
@@ -57,6 +57,8 @@ done
 
 # dB & data install
 echo "====> Install"
+ls node_modules/mathjax
+ls node_modules/three
 node --experimental-specifier-resolution=node dist-install/install
 
 # Corepack
