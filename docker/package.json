@@ -8,6 +8,7 @@
     "start": "NODE_ENV=production NODE_OPTIONS=\"--max_old_space_size=8192\" node --experimental-specifier-resolution=node dist/src/server/index.js"
   },
   "dependencies": {
+    "@airthium/extract-json-from-string": "1.0.2",
     "@airthium/pg-format": "2.0.6",
     "@emotion/react": "11.10.6",
     "@hapi/iron": "7.0.1",
