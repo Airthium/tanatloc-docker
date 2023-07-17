@@ -24,17 +24,16 @@ jobs:
         id: package_version
         run: |
           VERSION=`cat tanatloc/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]'`
-          echo "::set-output name=version::$VERSION"
+          echo "version=$VERSION" >> GITHUB_OUTPUT
 
       - name: Create release
         continue-on-error: true
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ steps.package_version.outputs.version }}
-          release_name: v${{ steps.package_version.outputs.version }}
           body: |
             Deployment docker available in [Docker Hub](https://hub.docker.com/repository/docker/tanatloc/tanatloc/tags)
             - Minimal: without Tanatloc plugins (only "Local")
