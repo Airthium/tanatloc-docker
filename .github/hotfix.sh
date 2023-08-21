@@ -6,7 +6,7 @@ echo "Update hotfix"
 
 ## Submodules
 submodules() {
-    cd tanatloc && git pull && .github/submodules.sh && cd-
+    cd tanatloc && git pull && .github/submodules.sh && cd -
 }
 
 ## Update
