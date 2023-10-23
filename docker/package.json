@@ -8,28 +8,28 @@
     "start": "NODE_ENV=production NODE_OPTIONS=\"--max_old_space_size=8192\" node --experimental-specifier-resolution=node dist/src/server/index.js"
   },
   "dependencies": {
-    "@airthium/extract-json-from-string": "1.0.31",
-    "@airthium/pg-format": "2.0.36",
+    "@airthium/extract-json-from-string": "1.0.32",
+    "@airthium/pg-format": "2.0.37",
     "@hapi/iron": "7.0.1",
-    "@sentry/node": "7.74.0",
-    "antd": "5.10.1",
+    "@sentry/node": "7.74.1",
+    "antd": "5.10.2",
     "archiver": "6.0.1",
     "cookie": "0.5.0",
     "ejs": "3.1.9",
-    "electron": "27.0.0",
+    "electron": "27.0.2",
     "electron-serve": "1.1.0",
     "electron-store": "8.1.0",
     "express": "4.18.2",
     "extract-json-from-string": "1.0.1",
     "form-data": "4.0.0",
-    "html-react-parser": "4.2.2",
+    "html-react-parser": "4.2.9",
     "https-proxy-agent": "7.0.2",
     "is-docker": "3.0.0",
     "is-electron": "2.2.2",
     "lodash": "4.17.21",
     "mailersend": "2.2.0",
     "mathjax": "3.2.2",
-    "next": "13.5.4",
+    "next": "13.5.6",
     "node-fetch": "3.3.2",
     "passport": "0.6.0",
     "passport-local": "1.0.0",
@@ -49,5 +49,5 @@
     "url-join": "5.0.0",
     "uuid": "9.0.1"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@4.0.0"
 }
