@@ -9,25 +9,25 @@ useradd --shell /bin/bash -u "$UID" -d "$HOME" -o -c "" -m "$USER"
 # Set .env
 echo "====> Set .env"
 {
-  echo "export OCCPATH=${OCCPATH}"
-  echo "export GMSHPATH=${GMSHPATH}"
-  echo "export FREEFEMPATH=${FREEFEMPATH}"
-  echo "export CONVERTERSPATH=${CONVERTERSPATH}"
-  echo "export DB_ADMIN=${DB_ADMIN}"
-  echo "export DB_ADMIN_PASSWORD=${DB_ADMIN_PASSWORD}"
-  echo "export DB_HOST=${DB_HOST}"
-  echo "export DB_ADMIN=${DB_ADMIN}"
-  echo "export DOMAIN=${DOMAIN}"
-  echo "export ADDITIONAL_PATH=${ADDITIONAL_PATH}"
-  echo "export HOST_STORAGE=${HOST_STORAGE}"
-  echo "export HTTP_PROXY=${HTTP_PROXY}"
-  echo "export HTTPS_PROXY=${HTTPS_PROXY}"
-  echo "export SHARETASK_JVM=${SHARETASK_JVM}"
+	echo "export OCCPATH=${OCCPATH}"
+	echo "export GMSHPATH=${GMSHPATH}"
+	echo "export FREEFEMPATH=${FREEFEMPATH}"
+	echo "export CONVERTERSPATH=${CONVERTERSPATH}"
+	echo "export DB_ADMIN=${DB_ADMIN}"
+	echo "export DB_ADMIN_PASSWORD=${DB_ADMIN_PASSWORD}"
+	echo "export DB_HOST=${DB_HOST}"
+	echo "export DB_ADMIN=${DB_ADMIN}"
+	echo "export DOMAIN=${DOMAIN}"
+	echo "export ADDITIONAL_PATH=${ADDITIONAL_PATH}"
+	echo "export HOST_STORAGE=${HOST_STORAGE}"
+	echo "export HTTP_PROXY=${HTTP_PROXY}"
+	echo "export HTTPS_PROXY=${HTTPS_PROXY}"
+	echo "export SHARETASK_JVM=${SHARETASK_JVM}"
 } >$HOME/.env
 
 # Grant access
 echo "====> Grant access"
-chown -R $USER:$USER $HOME
+chown -R "$USER":"$USER" $HOME
 
 # Yarn version
 echo "====> Yarn version"

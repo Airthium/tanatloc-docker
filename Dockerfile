@@ -7,21 +7,21 @@ ENV INSTALL_PATH /home/app
 
 # Install packages
 RUN apt update \
-    && apt upgrade -yq \
-    && apt install -yq \
-    apt-utils curl \
-    git gnupg g++ libpq-dev \
-    make python3 \
-    && apt autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	&& apt upgrade -yq \
+	&& apt install -yq \
+	apt-utils curl \
+	git gnupg g++ libpq-dev \
+	make python3 \
+	&& apt autoremove \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Node
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -yq nodejs \
-    && apt autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+	&& apt-get install -yq nodejs \
+	&& apt autoremove \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Yarn
 RUN corepack enable
@@ -44,9 +44,9 @@ WORKDIR ${INSTALL_PATH}
 COPY tanatloc .
 
 RUN YARN_CHECKSUM_BEHAVIOR="update" yarn install \
-    && yarn run prestart:norun \
-    && yarn run next telemetry disable \
-    && yarn run build
+	&& yarn run prestart:norun \
+	&& yarn run next telemetry disable \
+	&& yarn run build
 
 ## RELEASE ##
 FROM tanatloc/worker
@@ -58,21 +58,21 @@ ENV APP_PATH /home/app
 
 # Install packages
 RUN apt update \
-    && apt upgrade -yq \
-    && apt install -yq \
-    curl git gnupg g++ libpq-dev \
-    make postgresql python3 \
-    sudo \
-    && apt autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	&& apt upgrade -yq \
+	&& apt install -yq \
+	curl git gnupg g++ libpq-dev \
+	make postgresql python3 \
+	sudo \
+	&& apt autoremove \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Node
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs \
-    && apt autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+	&& apt-get install -y nodejs \
+	&& apt autoremove \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Yarn
 RUN corepack enable
@@ -95,8 +95,8 @@ COPY --from=builder ${INSTALL_PATH}/yarn.lock yarn.lock
 
 # Corepack prepare
 RUN YARN_VERSION=$(cat package.json | grep packageManager | head -1 | awk -F: '{ print $2 }' | sed 's/["\ ]//g' | sed 's/yarn@//g') \
-    && corepack prepare yarn@${YARN_VERSION} -o=yarn-${YARN_VERSION}.tgz \
-    && mkdir -p ./.cache && cp -r /root/.cache/node ./.cache/node
+	&& corepack prepare yarn@${YARN_VERSION} -o=yarn-${YARN_VERSION}.tgz \
+	&& mkdir -p ./.cache && cp -r /root/.cache/node ./.cache/node
 
 # Build
 ARG DB_ADMIN
@@ -112,7 +112,7 @@ ARG DB_PORT
 ENV DB_PORT $DB_PORT
 
 RUN YARN_CHECKSUM_BEHAVIOR="update" yarn install \
-    && yarn run next telemetry disable
+	&& yarn run next telemetry disable
 
 # Path
 ENV ADDITIONAL_PATH $ADDITIONAL_PATH
@@ -130,4 +130,4 @@ COPY docker/start.sh start.sh
 RUN chmod a+x start.sh
 
 ## START
-CMD export PATH=$PATH:$ADDITIONAL_PATH; ${APP_PATH}/start.sh
+CMD export PATH="$PATH:$ADDITIONAL_PATH"; ${APP_PATH}/start.sh
