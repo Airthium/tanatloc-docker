@@ -2,7 +2,7 @@ name: Build and release docker
 
 on:
   workflow_run:
-    workflows: ["Submodule update"]
+    workflows: ['Submodule update']
     types:
       - completed
 
@@ -24,7 +24,7 @@ jobs:
         id: package_version
         run: |
           VERSION=`cat tanatloc/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]'`
-          echo "version=$VERSION" >> GITHUB_OUTPUT
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Create release
         continue-on-error: true
