@@ -57,9 +57,7 @@ done
 
 # dB & data install
 echo "====> Install"
-ls node_modules/mathjax
-ls node_modules/three
-node --experimental-specifier-resolution=node dist-install/install
+node --import tsx dist-install/install
 
 # Corepack
 echo "====> Hydrate corepack..."
