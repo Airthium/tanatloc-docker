@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@airthium/extract-json-from-string": "1.0.45",
-    "@airthium/pg-format": "2.0.50",
+    "@airthium/pg-format": "2.0.51",
     "@hapi/iron": "7.0.1",
     "@sentry/nextjs": "7.98.0",
     "antd": "5.13.3",
