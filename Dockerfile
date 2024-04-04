@@ -82,7 +82,7 @@ WORKDIR ${APP_PATH}
 
 COPY docker/package.json package.json
 
-COPY --from=builder ${INSTALL_PATH}/.git .git
+# COPY --from=builder ${INSTALL_PATH}/.git .git
 COPY --from=builder ${INSTALL_PATH}/.yarn .yarn
 COPY --from=builder ${INSTALL_PATH}/.yarnrc.yml .yarnrc.yml
 COPY --from=builder ${INSTALL_PATH}/dist dist
