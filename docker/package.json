@@ -11,12 +11,12 @@
     "@airthium/extract-json-from-string": "1.0.57",
     "@airthium/pg-format": "2.0.61",
     "@hapi/iron": "7.0.1",
-    "@sentry/nextjs": "7.113.0",
-    "antd": "5.16.5",
+    "@sentry/nextjs": "7.114.0",
+    "antd": "5.17.0",
     "archiver": "7.0.1",
     "cookie": "0.6.0",
     "ejs": "3.1.10",
-    "electron": "30.0.2",
+    "electron": "30.0.3",
     "electron-serve": "2.0.0",
     "electron-store": "9.0.0",
     "express": "4.19.2",
@@ -45,9 +45,9 @@
     "sharp": "0.33.3",
     "set-interval-async": "3.0.3",
     "tar": "7.1.0",
-    "tsx": "4.9.3",
+    "tsx": "4.10.1",
     "url-join": "5.0.0",
     "uuid": "9.0.1"
   },
-  "packageManager": "yarn@4.2.1"
+  "packageManager": "yarn@4.2.2"
 }
