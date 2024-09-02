@@ -8,7 +8,7 @@
     "start": "NODE_ENV=production NODE_OPTIONS=\"--max_old_space_size=8192\" node --import tsx dist/src/server/index.js"
   },
   "dependencies": {
-    "@airthium/extract-json-from-string": "1.0.71",
+    "@airthium/extract-json-from-string": "1.0.72",
     "@airthium/pg-format": "2.0.76",
     "@hapi/iron": "7.0.1",
     "@sentry/nextjs": "8.27.0",
