@@ -1,14 +1,8 @@
 {
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
   "timezone": "Europe/Paris",
-  "schedule": [
-    "before 9am on Monday"
-  ],
-  "baseBranches": [
-    "main"
-  ],
+  "schedule": ["before 9am on Monday"],
+  "baseBranches": ["main"],
   "groupName": "all dependencies",
   "separateMajorMinor": false,
   "groupSlug": "all",
@@ -16,15 +10,10 @@
     {
       "groupName": "all dependencies",
       "groupSlug": "all",
-      "matchPackageNames": [
-        "*"
-      ]
+      "matchPackageNames": ["*"]
     }
   ],
-  "ignoreDeps": [
-    "electron-serve",
-    "electron-store"
-  ],
+  "ignoreDeps": ["next", "electron", "electron-serve", "electron-store"],
   "lockFileMaintenance": {
     "enabled": false
   }
