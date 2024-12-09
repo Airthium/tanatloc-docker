@@ -13,7 +13,14 @@
       "matchPackageNames": ["*"]
     }
   ],
-  "ignoreDeps": ["next", "electron", "electron-serve", "electron-store"],
+  "ignoreDeps": [
+    "next",
+    "electron",
+    "electron-serve",
+    "electron-store",
+    "react",
+    "react-dom"
+  ],
   "lockFileMaintenance": {
     "enabled": false
   }
