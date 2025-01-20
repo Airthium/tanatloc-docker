@@ -8,22 +8,22 @@
     "start": "NODE_ENV=production NODE_OPTIONS=\"--max_old_space_size=8192\" node --import tsx dist/src/server/index.js"
   },
   "dependencies": {
-    "@airthium/extract-json-from-string": "1.0.81",
-    "@airthium/pg-format": "2.0.85",
+    "@airthium/extract-json-from-string": "1.0.82",
+    "@airthium/pg-format": "2.0.87",
     "@hapi/iron": "7.0.1",
-    "@sentry/nextjs": "8.41.0",
-    "antd": "5.22.2",
+    "@sentry/nextjs": "8.50.0",
+    "antd": "5.23.2",
     "archiver": "7.0.1",
     "cookie": "1.0.2",
     "ejs": "3.1.10",
     "electron": "33.0.1",
     "electron-serve": "1.3.0",
     "electron-store": "8.2.0",
-    "express": "4.21.1",
+    "express": "4.21.2",
     "extract-json-from-string": "1.0.1",
     "form-data": "4.0.1",
-    "html-react-parser": "5.1.18",
-    "https-proxy-agent": "7.0.5",
+    "html-react-parser": "5.2.2",
+    "https-proxy-agent": "7.0.6",
     "is-docker": "3.0.0",
     "is-electron": "2.2.2",
     "lodash": "4.17.21",
@@ -38,7 +38,7 @@
     "react-cookie": "7.2.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-redux": "9.1.2",
+    "react-redux": "9.2.0",
     "redux": "5.0.1",
     "@redux-devtools/extension": "3.3.0",
     "redux-persist": "6.0.0",
@@ -47,7 +47,7 @@
     "tar": "7.4.3",
     "tsx": "4.19.2",
     "url-join": "5.0.0",
-    "uuid": "11.0.3"
+    "uuid": "11.0.5"
   },
-  "packageManager": "yarn@4.5.3"
+  "packageManager": "yarn@4.6.0"
 }
