@@ -39,7 +39,7 @@
     "react-dom": "19.1.0",
     "set-interval-async": "3.0.3",
     "sharp": "0.34.1",
-    "tar": "7.4.3",
+    "tar": "7.5.11",
     "tsx": "4.19.4",
     "url-join": "5.0.0",
     "uuid": "11.1.0"
