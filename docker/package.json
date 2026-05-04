@@ -8,15 +8,15 @@
     "start": "NODE_ENV=production NODE_OPTIONS=\"--max_old_space_size=8192\" node --import tsx dist/src/server/index.js"
   },
   "dependencies": {
-    "@2ltech/extract-json-from-string": "1.0.6",
-    "@2ltech/pg-format": "1.0.8",
+    "@2ltech/extract-json-from-string": "1.0.7",
+    "@2ltech/pg-format": "1.0.9",
     "@hapi/iron": "7.0.1",
-    "@sentry/nextjs": "10.50.0",
-    "antd": "5.29.3",
+    "@sentry/nextjs": "10.51.0",
+    "antd": "6.3.7",
     "archiver": "7.0.1",
     "cookie": "1.1.1",
     "ejs": "5.0.2",
-    "electron": "41.3.0",
+    "electron": "41.5.0",
     "electron-serve": "3.0.1",
     "electron-store": "11.0.2",
     "express": "5.2.1",
@@ -27,7 +27,7 @@
     "is-electron": "2.2.2",
     "lodash": "4.18.1",
     "mailersend": "2.8.0",
-    "mathjax": "4.1.1",
+    "mathjax": "4.1.2",
     "next": "14.2.35",
     "node-fetch": "3.3.2",
     "passport": "0.7.0",
@@ -35,7 +35,7 @@
     "pg": "8.20.0",
     "pg-native": "npm:@airthium/pg-native@3.0.2",
     "react": "19.2.5",
-    "react-cookie": "8.1.0",
+    "react-cookie": "8.1.2",
     "react-dom": "19.2.5",
     "set-interval-async": "3.0.3",
     "sharp": "0.34.5",
@@ -44,5 +44,5 @@
     "url-join": "5.0.0",
     "uuid": "14.0.0"
   },
-  "packageManager": "yarn@4.9.1"
+  "packageManager": "yarn@4.14.1"
 }
