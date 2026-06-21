@@ -21,7 +21,7 @@
     "electron-serve": "3.0.1",
     "electron-store": "11.0.2",
     "express": "5.2.1",
-    "form-data": "4.0.5",
+    "form-data": "4.0.6",
     "html-react-parser": "6.0.1",
     "https-proxy-agent": "9.0.0",
     "is-docker": "4.0.0",
